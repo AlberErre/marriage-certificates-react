@@ -1,0 +1,33 @@
+{
+  "name": "marriage-certificates-react",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Alber Erre",
+    "url": "https://albererre.com/"
+  },
+  "homepage": "https://ether-marriage.com/",
+  "main": "index.js",
+  "description": "Front End for marriage certificates service on Ethereum",
+  "scripts": {
+    "dev": "node_modules/.bin/parcel serve public/index.html",
+    "build": "node_modules/.bin/parcel build public/index.html --no-source-maps -d build/output"
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.4.2",
+    "react-particles-js": "^2.3.0",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.10.1",
+    "postcss-clean": "^1.1.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-font-magician": "^2.2.1",
+    "postcss-mixins": "^6.2.0",
+    "postcss-preset-env": "^6.0.7"
+  }
+}
