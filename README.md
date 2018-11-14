@@ -32,6 +32,6 @@ npm run dev
 
 ## Examples
 
-<img src="https://github.com/AlberErre/weddings-react/blob/master/images/example-certificates-view.png" width=800 />
+<img src="./images/example-register-view.png" width=800 />
 
-<img src="https://github.com/AlberErre/weddings-react/blob/master/images/example-register-view.png" width=800 />
+<img src="./images/example-certificates-view.png" width=800 />
