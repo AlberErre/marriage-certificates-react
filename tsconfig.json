@@ -16,6 +16,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
+  "files": ["./src/**/*.tsx", "./src/*.tsx"],
   "exclude": ["node_modules", "build", "dist", "webpack"],
   "types": ["typePatches"]
 }
