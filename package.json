@@ -20,6 +20,9 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "@types/node": "^12.6.2",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -28,6 +31,7 @@
     "postcss-easy-import": "^3.0.0",
     "postcss-font-magician": "^2.2.1",
     "postcss-mixins": "^6.2.0",
-    "postcss-preset-env": "^6.0.7"
+    "postcss-preset-env": "^6.0.7",
+    "typescript": "^3.5.3"
   }
 }
