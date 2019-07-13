@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState, ReactNode } from "react";
 import FlipButton from "./components/FlipButton";
 import ViewRegister from "./components/ViewRegister";
 import ViewCertificates from "./components/ViewCertificates";
@@ -14,80 +14,67 @@ const style_particle = {
   zIndex: -1
 };
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+interface JsonArray
+  extends Array<string | number | boolean | Date | Json | JsonArray> {}
 
-    this.state = {
-      data: null,
-      view: 1,
-      msg: null,
-      msg2: null
-    };
+interface Json {
+  [x: string]: string | number | boolean | Date | Json | JsonArray;
+}
 
-    this.getData = this.getData.bind(this);
-    this.getView = this.getView.bind(this);
-  }
+const App = (): ReactNode => {
+  const [data, setData] = useState({
+    yourSelf: "",
+    yourPartner: ""
+  });
+  const [view, setView] = useState(1);
+  const [registerMsg, setRegisterMsg] = useState("");
+  const [certificateMsg, setCertificateMsg] = useState("");
 
-  getData(e) {
+  const getData = (e: Event): void => {
     e.preventDefault();
-    let YourSelf = e.target.elements.YourSelf.value;
-    let YourPartner = e.target.elements.YourPartner.value;
+    let message: string =
+      data.yourSelf !== "" && data.yourPartner !== ""
+        ? "Perfect! - Please confirm transaction on metamask to register your marriage."
+        : "You need to fill both names, your partner and yourself.";
+    setRegisterMsg(message);
+    // Insert function to send data to blockchain here
+  };
 
-    if (YourSelf && YourPartner) {
-      this.setState({
-        msg:
-          "Perfect! - Please confirm transaction on metamask to register your marriage."
-      });
-      // Insert function to send data to blockchain here
-    } else {
-      this.setState({
-        msg: "You need to fill both names, your partner and yourself."
-      });
-    }
-  }
+  const onInputChange = (e: Event): void => {
+    e.preventDefault();
+    let name: string = (e.target as HTMLInputElement).name;
+    let value: string = (e.target as HTMLInputElement).value;
+    setData({ ...data, [name]: value });
+  };
 
-  getView() {
-    if (this.state.view == 1) {
-      this.setState({
-        view: 2
-      });
-    } else {
-      this.setState({
-        view: 1
-      });
-    }
-  }
+  const getView = (): void => {
+    view == 1 ? setView(2) : setView(1);
+  };
 
-  render() {
-    return (
-      <div>
-        <Particles params={ParticlesConfig} style={style_particle} />
+  return (
+    <div>
+      <Particles params={ParticlesConfig as Json} style={style_particle} />
 
-        <div className="box-wrapper">
-          <div className="main">
-            <div className="container">
-              <FlipButton func={this.getView} />
+      <div className="box-wrapper">
+        <div className="main">
+          <div className="container">
+            <FlipButton setView={getView} />
 
-              <div className="innerContainer shadow">
-                <ViewRegister
-                  view={this.state.view}
-                  msg={this.state.msg}
-                  getData={this.getData}
-                />
+            <div className="innerContainer shadow">
+              <ViewRegister
+                view={view}
+                msg={registerMsg}
+                getData={getData}
+                onInputChange={onInputChange}
+              />
 
-                <ViewCertificates
-                  view={this.state.view}
-                  data={this.state.data}
-                  msg2={this.state.msg2}
-                />
-              </div>
+              <ViewCertificates view={view} data={data} msg={certificateMsg} />
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
