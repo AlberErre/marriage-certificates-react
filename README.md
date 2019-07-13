@@ -3,6 +3,10 @@ Front End (React) for marriage certificates service on Ethereum 📦
 
 ## Live - https://ether-marriage.com
 
+<img src="./images/example-register-view.png" width=800 />
+
+<img src="./images/example-certificates-view.png" width=800 />
+
 ## Quick Start
 ```
 npm install
@@ -29,9 +33,3 @@ npm run dev
 3) Fill in Ethereum account (the one who registered the marriage)
 4) Click on "Check certificate"
 5) Your marriage data should be displayed below, congrats!
-
-## Examples
-
-<img src="./images/example-register-view.png" width=800 />
-
-<img src="./images/example-certificates-view.png" width=800 />
